@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSnap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="h1"><img src="assets/logo.png" alt="logo" height="90"><h1> WeatherSnap</h1></div>
+        <form action="/" method="post">
+            <!-- <label for="search">Enter City</label> -->
+            <input type="text" placeholder="Search for cities" name="city">
+            <button type="submit">Search</button>
+        </form>
+
+        <% if(locals.city){%>
+
+            <div class="weather">
+                <div class="main">
+                    <div class="left-weather">
+                        <h2>
+                            <%=city%>
+                        </h2>
+                        <h3>
+                            <%=temperature%>°C
+                        </h3>
+                    </div>
+                    <div class="right-weather">
+                        <img src=<%=icon%> alt="weather-icon">
+                        <p>
+                            <%= weather%>
+                        </p>
+                    </div>
+                </div>
+                <div class="other">
+                    <div>
+                        <p>Max Temp: <%=max_temp%>°C</p>
+                        <p>Min temp: <%=min_temp%>°C</p>
+                    </div>
+                    <div>
+
+                        <p>Visibility: <%=visibility%> m</p>
+                        <p>Sunrise: <%=sunrise%> AM</p>
+                        <p>Sunset: <%=sunset%> PM</p>
+                    </div>
+                    <div>
+
+                        <p>Pressure: <%=pressure%> hPa</p>
+                        <p>Humidity: <%=humidity%>%</p>
+                        <p>Wind: <%=wind_speed%> m/s</p>
+                    </div>
+                </div>
+            </div>
+
+            <%}%>
+                <div class="extra">
+
+                    <% if(locals.cities){%>
+                        <h2>Frequently searched</h2>
+                        <div class="grid">
+                            <div class="headings">
+
+                                <div class="item this left">City</div>
+                                <div class="item this">Weather</div>
+                                <div class="item this">Temperature</div>
+                                <div class="item this">High</div>
+                                <div class="item this right">Low</div>
+
+                            </div>
+                            <div class="rest">
+                                <% for(let i=0;i<cities.length;i++){%>
+
+                                    <div class="city">
+                                        <div class="item">
+                                            <%= cities[i] %>
+                                        </div>
+                                        <div class="item res"><img
+                                                src="<%=`https://openweathermap.org/img/wn/${icon_src[i]}@2x.png`%>">
+                                            <%= weather_of_city[i] %>
+                                        </div>
+                                        <div class="item res">
+                                            <%= temperatures[i] %>°C
+                                                <p class="dont">Temp</p>
+                                        </div>
+                                        <div class="item res">
+                                            <%= max[i] %>°C
+                                                <p class="dont">Max</p>
+                                        </div>
+                                        <div class="item res">
+                                            <%= min[i] %>°C
+                                                <p class="dont">Min</p>
+                                        </div>
+                                    </div>
+                                    <%}%>
+                            </div>
+                            <%}%>
+                        </div>
+                </div>
+
+    </div>
+    <footer>
+        Weather App
+    </footer>
+
+    <script>
+        if (document.querySelector(".item.this").style.display === "none") {
+
+        }
+    </script>
+</body>
+
+</html>
