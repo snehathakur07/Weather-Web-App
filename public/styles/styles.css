@@ -74,6 +74,8 @@ form button {
     border-radius: 15px;
     cursor: pointer;
     border: 1px solid rgb(11, 19, 30);
+    transition:all 0.2s ease-in;
+
 }
 
 .extra {
@@ -196,6 +198,14 @@ form button {
 .other>div>p{
     width:fit-content;
     margin:auto;
+}
+.clicked-btn{
+    color:white;
+    background:rgb(11, 19, 30);
+    border: 2px solid white;
+}
+form button:hover{
+    transform: scale(1.1);
 }
 .right-weather{
     display: flex;

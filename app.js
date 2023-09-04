@@ -5,7 +5,9 @@ import 'dotenv/config'
 
 // dotenv.config();
 
-const apiKey=process.env.API_KEY;
+// const apiKey=process.env.API_KEY;
+const apiKey = "b783a4923b3aa305092b4905685f251c";
+// 
 
 
 
@@ -47,7 +49,7 @@ catch (error) {
 }
 
 app.get("/", async (req, res) => {
-    
+
     res.render("index.ejs", {
         cities: cities,
         weather_of_city: weather_cities,
@@ -75,6 +77,9 @@ app.post("/", async (req, res) => {
 
         //collecting maxTemp
         const maxTemp = Math.floor(result.data.main.temp_max - 273.15)
+
+        //collecting feels like
+        const feels_like = Math.floor(result.data.main.feels_like - 273.15)
 
         //collecting minTemp
         const minTemp = Math.floor(result.data.main.temp_min - 273.15)
@@ -118,6 +123,7 @@ app.post("/", async (req, res) => {
             temperature: temp,
             max_temp: maxTemp,
             min_temp: minTemp,
+            feels_like:feels_like,
             humidity: humidity,
             wind_speed: wind,
             visibility: visibility,

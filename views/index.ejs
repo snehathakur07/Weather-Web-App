@@ -17,7 +17,7 @@
         <form action="/" method="post">
             <!-- <label for="search">Enter City</label> -->
             <input type="text" placeholder="Search for cities" name="city">
-            <button type="submit">Search</button>
+            <button type="submit" >Search</button>
         </form>
 
         <% if(locals.city){%>
@@ -43,6 +43,7 @@
                     <div>
                         <p>Max Temp: <%=max_temp%>°C</p>
                         <p>Min temp: <%=min_temp%>°C</p>
+                        <p>Feels Like: <%=feels_like%>°C</p>
                     </div>
                     <div>
 
@@ -110,9 +111,13 @@
     </footer>
 
     <script>
-        if (document.querySelector(".item.this").style.display === "none") {
-
-        }
+        let btn=document.querySelector("button");
+        btn.addEventListener("click",()=>{
+            btn.classList.add("clicked-btn");
+            setTimeout(()=>{
+                btn.classList.remove("clikced-btn");
+            },300)
+        })
     </script>
 </body>
 
