@@ -1,15 +1,10 @@
 import express from "express"
 import bodyParser from "body-parser"
 import axios from "axios"
-import 'dotenv/config'
+import { configDotenv } from "dotenv";
+configDotenv();
 
-// dotenv.config();
-
-// const apiKey=process.env.API_KEY;
-const apiKey = "b783a4923b3aa305092b4905685f251c";
-// 
-
-
+const apiKey=process.env.API_KEY;
 
 console.log(apiKey)
 
